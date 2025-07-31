@@ -8,13 +8,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 
 @Entity
+@SequenceGenerator(
+        name = "employee_seq",
+        initialValue = 1,
+        allocationSize = 1)
 public class Employee extends Person implements Serializable{
     
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "employee_seq")
     private int employee_id;
     @Basic
     private String username;

@@ -123,6 +123,18 @@ public class EmployeeJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public Employee findEmployeeByPhoneNumber(String phoneNumber) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery(
+            "SELECT e FROM Employee e WHERE e.phoneNumber = :phoneNumber", Employee.class)
+                    .setParameter("phoneNumber", phoneNumber)
+                    .getSingleResult();
+        } finally {
+            em.close();
+        }
+    }
 
     public int getEmployeeCount() {
         EntityManager em = getEntityManager();
