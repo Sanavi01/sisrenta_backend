@@ -1,0 +1,13 @@
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/logica/Factura.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/persistence/ClienteJpaController.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/logica/Employee.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/logica/LogicController.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/persistence/EmployeeJpaController.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/Sisrenta_backend.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/persistence/exceptions/NonexistentEntityException.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/logica/Person.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/persistence/exceptions/PreexistingEntityException.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/persistence/PersistenceController.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/persistence/exceptions/IllegalOrphanException.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/persistence/FacturaJpaController.java
+/mnt/Disco-Tera/repos-git/sisrenta_backend/sisrenta_backend/src/main/java/com/mycompany/sisrenta_backend/logica/Cliente.java

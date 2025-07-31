@@ -1,0 +1,17 @@
+com/mycompany/sisrenta_backend/persistence/exceptions/IllegalOrphanException.class
+com/mycompany/sisrenta_backend/logica/Factura_.class
+com/mycompany/sisrenta_backend/logica/Employee.class
+com/mycompany/sisrenta_backend/logica/Person_.class
+com/mycompany/sisrenta_backend/logica/Employee_.class
+com/mycompany/sisrenta_backend/logica/Cliente.class
+com/mycompany/sisrenta_backend/logica/LogicController.class
+com/mycompany/sisrenta_backend/logica/Cliente_.class
+com/mycompany/sisrenta_backend/persistence/EmployeeJpaController.class
+com/mycompany/sisrenta_backend/persistence/FacturaJpaController.class
+com/mycompany/sisrenta_backend/logica/Factura.class
+com/mycompany/sisrenta_backend/Sisrenta_backend.class
+com/mycompany/sisrenta_backend/persistence/ClienteJpaController.class
+com/mycompany/sisrenta_backend/persistence/exceptions/PreexistingEntityException.class
+com/mycompany/sisrenta_backend/logica/Person.class
+com/mycompany/sisrenta_backend/persistence/exceptions/NonexistentEntityException.class
+com/mycompany/sisrenta_backend/persistence/PersistenceController.class
