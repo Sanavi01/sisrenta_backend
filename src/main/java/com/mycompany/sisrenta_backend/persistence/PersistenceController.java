@@ -2,6 +2,7 @@ package com.mycompany.sisrenta_backend.persistence;
 
 import com.mycompany.sisrenta_backend.logica.Cliente;
 import com.mycompany.sisrenta_backend.logica.Employee;
+import com.mycompany.sisrenta_backend.logica.Factura;
 import com.mycompany.sisrenta_backend.persistence.exceptions.NonexistentEntityException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,5 +69,29 @@ public class PersistenceController {
 
     // --------------------Factura Jpa Controller --------------------------
     FacturaJpaController facturaJpa = new FacturaJpaController();
+
+    public void createFactura(Factura factura) {
+        facturaJpa.create(factura);
+    }
+
+    public Factura findFacturaById(int id) {
+        return facturaJpa.findFactura(id);
+    }
+
+    public void editFactura(Factura facturaEncontrada) {
+        try {
+            facturaJpa.edit(facturaEncontrada);
+        } catch (Exception ex) {
+            Logger.getLogger(PersistenceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteFactura(int id) {
+        try {
+            facturaJpa.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(PersistenceController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

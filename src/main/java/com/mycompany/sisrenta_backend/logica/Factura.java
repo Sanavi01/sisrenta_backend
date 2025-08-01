@@ -7,14 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@SequenceGenerator(name = "invoice_seq",
+        allocationSize = 1,
+        initialValue = 1)
 public class Factura implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "invoice_seq")
     private int id;
     
     @Basic
@@ -33,11 +40,15 @@ public class Factura implements Serializable {
     private int rentValue;
     private int creditValue;
     private int depositValue;
+    
+    @ManyToOne
+    @JoinColumn(name = "cliente_id") // crea la columna cliente_id en factura
+    private Cliente cliente;
 
     public Factura() {
     }
 
-    public Factura(int id, String description, String state, Date creationDate, Date devolutionDate, Date deliverDate, String extraInfoRent, int rentValue, int creditValue, int depositValue) {
+    public Factura(int id, String description, String state, Date creationDate, Date devolutionDate, Date deliverDate, String extraInfoRent, int rentValue, int creditValue, int depositValue, Cliente cliente) {
         this.id = id;
         this.description = description;
         this.state = state;
@@ -48,7 +59,10 @@ public class Factura implements Serializable {
         this.rentValue = rentValue;
         this.creditValue = creditValue;
         this.depositValue = depositValue;
+        this.cliente = cliente;
     }
+
+    
 
     public int getId() {
         return id;
@@ -129,6 +143,15 @@ public class Factura implements Serializable {
     public void setDepositValue(int depositValue) {
         this.depositValue = depositValue;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
     
     
 

@@ -1,6 +1,7 @@
 package com.mycompany.sisrenta_backend.logica;
 
 import com.mycompany.sisrenta_backend.persistence.PersistenceController;
+import java.util.LinkedList;
 
 /**
  *
@@ -47,4 +48,31 @@ public class LogicController {
     }
 
     // --------------------Factura Methods --------------------------
+
+    public void createFactura(Factura factura) {
+        persisController.createFactura(factura);
+    }
+
+    public LinkedList<Factura> findFacturasDelCliente(String phoneNumber) {
+        Cliente cliente = findClienteByPhoneNumber(phoneNumber);
+        return cliente.getListaFacturas();
+    }
+
+    public Factura findFacturaById(int id) {
+        return persisController.findFacturaById(id);
+    }
+
+    public void editFactura(Factura facturaEncontrada) {
+        persisController.editFactura(facturaEncontrada);
+    }
+
+    public void deleteFactura(int id) {
+        persisController.deleteFactura(id);
+    }
+
+
+
+
+    
+    
 }

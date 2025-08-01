@@ -2,6 +2,7 @@ package com.mycompany.sisrenta_backend.logica;
 
 import java.io.Serializable;
 import java.util.LinkedList;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,7 @@ public class Cliente extends Person implements Serializable {
             generator = "cliente_seq")
     private int client_id;
 
-    @OneToMany
+    @OneToMany (mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
     private LinkedList<Factura> listaFacturas;
 
     public Cliente() {
