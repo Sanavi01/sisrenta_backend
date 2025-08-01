@@ -1,8 +1,7 @@
 package com.mycompany.sisrenta_backend.logica;
 
 import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.Basic;
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @SequenceGenerator(name = "invoice_seq",
@@ -23,46 +20,56 @@ public class Factura implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "invoice_seq")
     private int id;
-    
-    @Basic
+
     private String description;
+
+    /*
+    Existen los siguientes estados
+        -Apartado
+        -Entregado
+        -Recibido
+     */
     private String state;
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date creationDate;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date devolutionDate;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date deliverDate;
-    
-    @Basic
+
+    private LocalDateTime creationDate;
+    private LocalDateTime deliverDate;
+    private LocalDateTime deliveredDate;
+    private LocalDateTime devolutionDate;
+    private LocalDateTime finishDate;
+
     private String extraInfoRent;
     private int rentValue;
     private int creditValue;
     private int depositValue;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id") // crea la columna cliente_id en factura
+    private Cliente cliente;
     
     @ManyToOne
-    @JoinColumn(name = "cliente_id") // crea la columna cliente_id en factura
-    private Cliente cliente;
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
 
     public Factura() {
     }
 
-    public Factura(int id, String description, String state, Date creationDate, Date devolutionDate, Date deliverDate, String extraInfoRent, int rentValue, int creditValue, int depositValue, Cliente cliente) {
+    public Factura(int id, String description, String state, LocalDateTime creationDate, LocalDateTime deliverDate, LocalDateTime deliveredDate, LocalDateTime devolutionDate, LocalDateTime finishDate, String extraInfoRent, int rentValue, int creditValue, int depositValue, Cliente cliente, Employee employee) {
         this.id = id;
         this.description = description;
         this.state = state;
         this.creationDate = creationDate;
-        this.devolutionDate = devolutionDate;
         this.deliverDate = deliverDate;
+        this.deliveredDate = deliveredDate;
+        this.devolutionDate = devolutionDate;
+        this.finishDate = finishDate;
         this.extraInfoRent = extraInfoRent;
         this.rentValue = rentValue;
         this.creditValue = creditValue;
         this.depositValue = depositValue;
         this.cliente = cliente;
+        this.employee = employee;
     }
-
-    
 
     public int getId() {
         return id;
@@ -88,28 +95,36 @@ public class Factura implements Serializable {
         this.state = state;
     }
 
-    public Date getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
-    public Date getDevolutionDate() {
+    public LocalDateTime getDevolutionDate() {
         return devolutionDate;
     }
 
-    public void setDevolutionDate(Date devolutionDate) {
+    public void setDevolutionDate(LocalDateTime devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
 
-    public Date getDeliverDate() {
+    public LocalDateTime getDeliverDate() {
         return deliverDate;
     }
 
-    public void setDeliverDate(Date deliverDate) {
+    public void setDeliverDate(LocalDateTime deliverDate) {
         this.deliverDate = deliverDate;
+    }
+
+    public LocalDateTime getDeliveredDate() {
+        return deliveredDate;
+    }
+
+    public void setDeliveredDate(LocalDateTime deliveredDate) {
+        this.deliveredDate = deliveredDate;
     }
 
     public String getExtraInfoRent() {
@@ -151,8 +166,20 @@ public class Factura implements Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
-    
-    
 
+    public LocalDateTime getFinishDate() {
+        return finishDate;
+    }
+
+    public void setFinishDate(LocalDateTime finishDate) {
+        this.finishDate = finishDate;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
 }

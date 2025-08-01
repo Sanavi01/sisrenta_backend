@@ -1,7 +1,8 @@
 package com.mycompany.sisrenta_backend.logica;
 
 import com.mycompany.sisrenta_backend.persistence.PersistenceController;
-import java.util.LinkedList;
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  *
@@ -50,10 +51,12 @@ public class LogicController {
     // --------------------Factura Methods --------------------------
 
     public void createFactura(Factura factura) {
+        factura.setCreationDate(LocalDateTime.now());
+        factura.setState("Apartado");
         persisController.createFactura(factura);
     }
 
-    public LinkedList<Factura> findFacturasDelCliente(String phoneNumber) {
+    public List<Factura> findFacturasDelCliente(String phoneNumber) {
         Cliente cliente = findClienteByPhoneNumber(phoneNumber);
         return cliente.getListaFacturas();
     }
@@ -68,6 +71,20 @@ public class LogicController {
 
     public void deleteFactura(int id) {
         persisController.deleteFactura(id);
+    }
+
+    public void switchFacturaStatus(int id) {
+        Factura factura = findFacturaById(id);
+        System.out.println(factura.getState());
+        if(factura.getState().equals("Apartado")){
+            factura.setState("Entregado");
+            factura.setDeliveredDate(LocalDateTime.now());
+            editFactura(factura);
+        } else if(factura.getState().equals("Entregado")){
+            factura.setState("Recibido");
+            editFactura(factura);
+        }
+
     }
 
 

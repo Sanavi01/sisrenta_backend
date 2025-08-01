@@ -1,7 +1,7 @@
 package com.mycompany.sisrenta_backend.logica;
 
 import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,13 +23,15 @@ public class Cliente extends Person implements Serializable {
             generator = "cliente_seq")
     private int client_id;
 
+    
+    //private LinkedList<Factura> listaFacturas;
     @OneToMany (mappedBy = "cliente", cascade = CascadeType.ALL, orphanRemoval = true)
-    private LinkedList<Factura> listaFacturas;
+    private List<Factura> listaFacturas;
 
     public Cliente() {
     }
 
-    public Cliente(int client_id, LinkedList<Factura> listaFacturas, String name, String lastName, String phoneNumber, String homeAddress) {
+    public Cliente(int client_id, List<Factura> listaFacturas, String name, String lastName, String phoneNumber, String homeAddress) {
         super(name, lastName, phoneNumber, homeAddress);
         this.client_id = client_id;
         this.listaFacturas = listaFacturas;
@@ -43,11 +45,11 @@ public class Cliente extends Person implements Serializable {
         this.client_id = client_id;
     }
 
-    public LinkedList<Factura> getListaFacturas() {
+    public List<Factura> getListaFacturas() {
         return listaFacturas;
     }
 
-    public void setListaFacturas(LinkedList<Factura> listaFacturas) {
+    public void setListaFacturas(List<Factura> listaFacturas) {
         this.listaFacturas = listaFacturas;
     }
 

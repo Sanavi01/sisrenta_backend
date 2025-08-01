@@ -2,12 +2,14 @@
 package com.mycompany.sisrenta_backend.logica;
 
 import java.io.Serializable;
-import java.util.LinkedList;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 
@@ -27,12 +29,13 @@ public class Employee extends Person implements Serializable{
     private String password;
     private String identificationNumber;
 
-    private LinkedList<Factura> listaFacturas;
+    @OneToMany (mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Factura> listaFacturas;
 
     public Employee() {
     }
 
-    public Employee(int employee_id, String username, String password, String identificationNumber, LinkedList<Factura> listaFacturas, String name, String lastName, String phoneNumber, String homeAddress) {
+    public Employee(int employee_id, String username, String password, String identificationNumber, List<Factura> listaFacturas, String name, String lastName, String phoneNumber, String homeAddress) {
         super(name, lastName, phoneNumber, homeAddress);
         this.employee_id = employee_id;
         this.username = username;
@@ -73,11 +76,11 @@ public class Employee extends Person implements Serializable{
         this.identificationNumber = identificationNumber;
     }
 
-    public LinkedList<Factura> getListaFacturas() {
+    public List<Factura> getListaFacturas() {
         return listaFacturas;
     }
 
-    public void setListaFacturas(LinkedList<Factura> listaFacturas) {
+    public void setListaFacturas(List<Factura> listaFacturas) {
         this.listaFacturas = listaFacturas;
     }
 
